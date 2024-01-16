@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-process-generator
+spec:
+  containers:
+  - name: random-process-generator
+    image: <your-registry>/random-process-generator:latest
+    # Security context to allow process renaming; may need to be adjusted or removed depending on your cluster setup
+    securityContext:
+      allowPrivilegeEscalation: false
