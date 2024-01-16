@@ -20,7 +20,13 @@ cp random-process-pod.yaml.example random-process-pod.yaml
 
 Apply the manifest:
 ```
-kubectl apply -f random-process-generator.yaml -n namespace
+kubectl create namespace process-test
+kubectl apply -f random-process-generator.yaml -n process-test
 ```
 
 Result should be a job that runs a subprocess from the entrypoint process.
+
+Quick way to run it and generate some test data:
+```
+for i in {1..100}; do k create -f random-process-pod.yaml -n process-test && sleep 30 && k delete pod -n process-test random-process-generator; done
+```
