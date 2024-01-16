@@ -10,12 +10,14 @@ docker tag random-process-generator:latest <your-registry>/random-process-genera
 docker push <your-registry>/random-process-generator:latest
 ```
 
-Install:
+Update configuration for your registry:
 
 ```
 cd /path/to/k8s-process-generator
-cp random-process-generator.yaml.example random-process-generator.yaml
+cp random-process-pod.yaml.example random-process-pod.yaml
+```
 
-# Update the registry in the manifest, then apply it:
+Apply the manifest:
+```
 kubectl apply -f random-process-generator.yaml -n namespace
 ```
